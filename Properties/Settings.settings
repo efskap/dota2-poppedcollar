@@ -6,7 +6,7 @@
       <Value Profile="(Default)">18</Value>
     </Setting>
     <Setting Name="shownspells" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">coldsnap ghostwalk emp tornado</Value>
     </Setting>
   </Settings>
 </SettingsFile>

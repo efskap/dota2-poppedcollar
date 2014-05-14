@@ -66,16 +66,21 @@ namespace InvokerWPF
     };
         const int ICON_SIZE = 100;
 
-        Point MouseOrigin;
+      
         System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-        static string[] fav_spells = { "coldsnap", "ghostwalk", "emp", "tornado" };
+        static string[] fav_spells = {};
 
-        static Dictionary<string, string> ActiveSpells = ALL_SPELLS.OrderBy(x => x.Value).Where(x => fav_spells.Contains(x.Key)).ToDictionary(x => x.Key, x => x.Value);
+        static Dictionary<string, string> ActiveSpells;
+
         public Overlay()
         {
-            Properties.Settings.Default["shownspells"] = String.Join(", ",fav_spells);
+
+
+            fav_spells = ((string)Properties.Settings.Default["shownspells"]).Split(' ');
+            ActiveSpells = ALL_SPELLS.OrderBy(x => x.Value).Where(x => fav_spells.Contains(x.Key)).ToDictionary(x => x.Key, x => x.Value); // oh god
+
             InitializeComponent();
-            //   canvas.Background = new SolidColorBrush(System.Windows.Media.Color.FromArgb(100, 100, 0, 0));
+         
             
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000 / 60);
@@ -99,8 +104,8 @@ namespace InvokerWPF
         }
         void dispatcherTimer_Tick(object sender, EventArgs e)
         {
-           if (GetActiveWindowTitle() != "DOTA 2")
-                return;
+        //   if (GetActiveWindowTitle() != "DOTA 2")
+      //          return;
             Point d = Utils.GetMousePosition();
             d.Offset(-Utils.GetScreenCenter().X, -Utils.GetScreenCenter().Y);
 
