@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace InvokerWPF
         public MainWindow()
         {
             InitializeComponent();
-            hotkey = (VirtualKeyCode)Properties.Settings.Default.hotkey;
+            hotkey = (VirtualKeyCode)Config.Get<Int64>("hotkey", 18);
             UpdateButtonText();
             updateHotkeyButton();
         }
@@ -81,13 +82,22 @@ namespace InvokerWPF
                 if (e.Key != Key.Escape)
                 {
                     hotkey = (VirtualKeyCode)KeyInterop.VirtualKeyFromKey(e.Key);
-                    Properties.Settings.Default["hotkey"] = (int)hotkey;
-                    Properties.Settings.Default.Save();
+                    if (hotkey == 0)
+                        hotkey = (VirtualKeyCode)18; //fix for alt
+                   Config.Set("hotkey",(int)hotkey);
+                 
                 }
                 catchHotkey = false;
                 updateHotkeyButton();
                 e.Handled = true;
             }
+        }
+
+        private void Label_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+          
+            Process.Start(new ProcessStartInfo("https://github.com/efskap/dota2-poppedcollar"));
+            e.Handled = true;
         }
 
     

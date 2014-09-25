@@ -6,11 +6,11 @@
         <ImageBrush ImageSource="Images/gray_jean.png"/>
     </Window.Background>
 
-    <Grid>
+    <Grid Margin="0,0,0,-8">
 
-        <Label Content="PoppedCollar" HorizontalAlignment="Center" FontSize="24"  />
+        <Label Content="PoppedCollar" HorizontalAlignment="Center" FontSize="24" MouseDown="Label_MouseDown" Cursor="Hand" Height="40" VerticalAlignment="Top" Background="{x:Null}" Foreground="#FF4E8BE4" BorderThickness="0,0,0,2" BorderBrush="#FF9CCCFD" Padding="5,5,5,0"  />
         <Button x:Name="button" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Center" Width="74"  FontSize="24" Click="Button_Click" IsTabStop="False" Focusable="False" />
-        <Button x:Name="hotkeybutton" Content="Hotkey" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="16"  IsTabStop="False" Click="hotkey_Click" Focusable="False" Margin="0,120,0,0"  />
-
-    </Grid>
+        <Button x:Name="hotkeybutton" Content="Hotkey" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="16"  IsTabStop="False" Click="hotkey_Click" Focusable="False" Margin="0,100,0,0"  />
+        </Grid>
+   
 </Window>

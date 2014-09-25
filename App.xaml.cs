@@ -1,5 +1,5 @@
-﻿using System;
-
+﻿using InvokerWPF;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -15,18 +15,10 @@ namespace InvokerWPF
     {
         public App()
         {
-
-            MakePortable(InvokerWPF.Properties.Settings.Default,"poppedcollar.cfg");
+            Config.Load();
+            
 
         }
-        private static void MakePortable(ApplicationSettingsBase settings, string filename)
-        {
-            var portableSettingsProvider =
-                new PortableSettingsProvider(filename);
-            settings.Providers.Add(portableSettingsProvider);
-            foreach (System.Configuration.SettingsProperty prop in settings.Properties)
-                prop.Provider = portableSettingsProvider;
-            settings.Reload();
-        }
+     
     }
 }

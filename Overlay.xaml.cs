@@ -76,7 +76,7 @@ namespace InvokerWPF
         {
 
 
-            fav_spells = ((string)Properties.Settings.Default["shownspells"]).Split(' ');
+            fav_spells = Config.Get<string>("shownspells", "coldsnap ghostwalk emp tornado").Split(' ');
             ActiveSpells = ALL_SPELLS.OrderBy(x => x.Value).Where(x => fav_spells.Contains(x.Key)).ToDictionary(x => x.Key, x => x.Value); // oh god
 
             InitializeComponent();
