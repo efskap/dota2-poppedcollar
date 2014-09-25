@@ -7,6 +7,8 @@ dota2-poppedcollar
 
 [Download binary (.zip)](https://github.com/efskap/dota2-poppedcollar/releases/download/1.0/invoker.zip)
 
+The key "menu" really means alt btw.
+
 Edit config.json to configure which spells show up.
 
 Possible values:
